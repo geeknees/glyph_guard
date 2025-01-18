@@ -14,15 +14,15 @@ class GeneratedImage < ApplicationRecord
     font_path   = options["font_path"]   || "app/assets/fonts/JetBrainsMonoNL-Regular.ttf"
     font_size   = options["font_size"]   || 24
     wave        = options["wave"]        || false
-    blur        = options["blur"]        || false
     implode     = options["implode"]     || false
+    blur        = options["blur"]        || false
 
     # まずは空の画像を生成するため、一時ファイルを作る
-    # ここでは 500x200 の白背景PNGを作る
+    # ここでは 1200x630 の白背景PNGを作る
     # `mini_magick` を直接呼ぶが、後段で image_processing パイプラインに渡せる
     temp_empty = Tempfile.new([ "empty", ".png" ])
     MiniMagick::Tool::Convert.new do |cmd|
-      cmd.size "500x200"
+      cmd.size "1200x630"
       cmd.xc "white"  # 白背景
       cmd << temp_empty.path
     end
@@ -35,12 +35,22 @@ class GeneratedImage < ApplicationRecord
         image = image.fill("black")
         image = image.pointsize(font_size.to_i)
         escaped_text = given_text.gsub(/(['"])/, '\\\\\1')
+
+        # テキストを140文字ごとに分割
+        lines = given_text.scan(/.{1,140}/)
+        y_offset = 50
+        line_height = font_size.to_i + 10
         image = image.draw("text 10,50 '#{escaped_text}'")
+        lines.each do |line|
+          escaped_text = line.gsub(/(['"])/, '\\\\\1')
+          image = image.draw("text 10,#{y_offset} '#{escaped_text}'")
+          y_offset += line_height
+        end
 
         # wave/implode/blur 等カスタム処理
         image = image.wave("5x50")   if wave
         image = image.implode("0.5") if implode
-        image = image.blur("0x3")    if blur
+        image = image.blur("0x2")    if blur
 
         image
       end
