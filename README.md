@@ -4,6 +4,23 @@
 
 文章をOCR対策し難読化するツール
 
+## Installation
+
+1. Install ImageMagick
+
+In a Mac terminal:
+
+```sh
+  $ brew install imagemagick vips
+  ```
+
+ In a debian/ubuntu terminal:
+
+```sh
+  $ sudo apt install imagemagick libvips
+  ```
+
+2. Set up and run the Rails app.
 
 ```
 bin/setup
