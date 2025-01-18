@@ -1,4 +1,4 @@
-# glyph_guard
+# Glyph Guard
 
 ![ci](https://github.com/geeknees/glyph_guard/actions/workflows/ci.yml/badge.svg)
 
