@@ -20,9 +20,18 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-gray-100 text-gray-900">
+    <nav class="navbar">
+      <div class="container mx-auto">
+        <a class="navbar-brand" href="<%= root_path %>">Glyph Guard</a>
+      </div>
+    </nav>
+
+    <div class="container mx-auto mt-8">
+      <%= yield %>
+    </div>
   </body>
 </html>

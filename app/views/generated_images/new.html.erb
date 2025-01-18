@@ -1,45 +1,60 @@
-<h1>New Generated Image</h1>
+<h1 class="text-2xl font-bold mb-4">New Generated Image</h1>
 
-<%= form_with model: @generated_image, local: true, data: { turbo: false }  do |f| %>
-  <% if @generated_image.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@generated_image.errors.count, "error") %> prohibited this generated_image from being saved:</h2>
-      <ul>
-        <% @generated_image.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="max-w-4xl mx-auto">
+  <%= form_with model: @generated_image, local: true, data: { turbo: false }, class: "space-y-6" do |f| %>
+    <% if @generated_image.errors.any? %>
+      <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+        <h2 class="font-bold mb-2"><%= pluralize(@generated_image.errors.count, "error") %> prohibited this generated_image from being saved:</h2>
+        <ul class="list-disc pl-5">
+          <% @generated_image.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :given_text,
+        class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.text_area :given_text, rows: 5,
+        class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :wave,
+        class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.check_box :wave,
+        class: "mr-2 leading-tight" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :implode,
+        class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.check_box :implode,
+        class: "mr-2 leading-tight" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :blur,
+        class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.check_box :blur,
+        class: "mr-2 leading-tight" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :use_zxx_noise_font,
+        class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.check_box :use_zxx_noise_font,
+        class: "mr-2 leading-tight" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create",
+        class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :given_text %>
-  </div>
-
-    <div class="field">
-    <%= f.label :wave %>
-    <%= f.check_box :wave %>
-  </div>
-
-  <div class="field">
-    <%= f.label :implode %>
-    <%= f.check_box :implode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :blur %>
-    <%= f.check_box :blur %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label '難読化フォントを使う（英語のみ）' %>
-    <%= f.check_box :use_zxx_noise_font %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create" %>
-  </div>
-<% end %>
-<%= link_to "Back", generated_images_path %>
+  <%= link_to "Back", generated_images_path,
+    class: "text-blue-500 hover:text-blue-700" %>
+</div>
 

@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ナビゲーションバーのスタイル */
+.navbar {
+  @apply bg-gray-800 text-white py-4;
+}
+
+.navbar .container {
+  @apply flex justify-between items-center;
+}
+
+.navbar-brand {
+  @apply text-white no-underline text-2xl;
+}
+
+.navbar-brand:hover {
+  @apply text-gray-300;
+}
+
+/* タイポグラフィのスタイル */
+body {
+  @apply font-sans text-gray-900 leading-relaxed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-800;
+}
+
+a {
+  @apply text-blue-600 underline;
+}
+
+a:hover {
+  @apply text-blue-800;
+}
+
+a:hover,
+.no-hover-color {
+  @apply text-white;
+}
+
+p {
+  @apply mb-4;
+}
+
+/* ボタンのスタイル */
+button {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+}
+
+button:hover {
+  @apply text-white;
+}
+
+/* フォームのスタイル */
+input[type='text'],
+textarea {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
+}
+/* フォームのスタイル */
+input[type='text'],
+textarea {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
+}
+
+textarea {
+  @apply w-[700px];
+}
+
+input[type='checkbox'] {
+  @apply mr-2 leading-tight;
+}
