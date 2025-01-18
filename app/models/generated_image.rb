@@ -13,7 +13,6 @@ class GeneratedImage < ApplicationRecord
     begin
       # options がハッシュで保存されていると想定
       # 例: { "font_path": "/path/to/font.ttf", "font_size": 24, "wave": true, ... }
-      font_path   = options["font_path"]   || "app/assets/fonts/JetBrainsMonoNL-Regular.ttf"
       font_path = if options["use_zxx_noise_font"]
         "app/assets/fonts/ZXXNoise.otf"
       else
