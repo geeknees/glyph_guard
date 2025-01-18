@@ -16,9 +16,7 @@ class GeneratedImagesController < ApplicationController
 
     # generate_ocr_block_image! メソッドを呼び出す
     @generated_image.options = {}
-    @generated_image.generate_ocr_block_image!
-
-    if @generated_image.save
+    if @generated_image.generate_ocr_block_image!
       redirect_to @generated_image, notice: "Generated image was successfully created."
     else
       render :new

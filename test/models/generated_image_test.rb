@@ -23,7 +23,6 @@ class GeneratedImageTest < ActiveSupport::TestCase
     generated_image = GeneratedImage.new(
       given_text: "Sample text",
       options: {
-        "font_path" => "app/assets/fonts/JetBrainsMonoNL-Regular.ttf",
         "font_size" => 24,
         "wave" => true,
         "blur" => true,
@@ -38,7 +37,6 @@ class GeneratedImageTest < ActiveSupport::TestCase
     generated_image = GeneratedImage.new(
       given_text: "Sample's text",
       options: {
-        "font_path" => "app/assets/fonts/JetBrainsMonoNL-Regular.ttf",
         "font_size" => 24,
         "wave" => true,
         "blur" => true,
