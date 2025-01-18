@@ -1,3 +1,4 @@
 <h1>Show Generated Image</h1>
-<p><strong>Text:</strong> <%= @generated_image.text %></p>
+<p><%= @generated_image.given_text %></p>
+<%= image_tag @generated_image.image %>
 <%= link_to "Back", generated_images_path %>

@@ -1,11 +1,22 @@
 <h1>New Generated Image</h1>
 
-<%= form_with model: @generated_image, local: true do |f| %>
-  <div>
-    <%= f.label :text %>
-    <%= f.text_field :text %>
+<%= form_with model: @generated_image, local: true, data: { turbo: false }  do |f| %>
+  <% if @generated_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@generated_image.errors.count, "error") %> prohibited this generated_image from being saved:</h2>
+      <ul>
+        <% @generated_image.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :given_text %>
   </div>
-  <div>
+
+  <div class="actions">
     <%= f.submit "Create" %>
   </div>
 <% end %>

@@ -13,6 +13,11 @@ class GeneratedImagesController < ApplicationController
 
   def create
     @generated_image = GeneratedImage.new(generated_image_params)
+
+    # generate_ocr_block_image! メソッドを呼び出す
+    @generated_image.options = {}
+    @generated_image.generate_ocr_block_image!
+
     if @generated_image.save
       redirect_to @generated_image, notice: "Generated image was successfully created."
     else
@@ -23,6 +28,6 @@ class GeneratedImagesController < ApplicationController
   private
 
   def generated_image_params
-    params.require(:generated_image).permit(:text, :options) # 例: text, optionsなど
+    params.require(:generated_image).permit(:given_text, :options)
   end
 end
