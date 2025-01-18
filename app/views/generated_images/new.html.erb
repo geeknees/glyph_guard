@@ -1,0 +1,13 @@
+<h1>New Generated Image</h1>
+
+<%= form_with model: @generated_image, local: true do |f| %>
+  <div>
+    <%= f.label :text %>
+    <%= f.text_field :text %>
+  </div>
+  <div>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
+<%= link_to "Back", generated_images_path %>
+

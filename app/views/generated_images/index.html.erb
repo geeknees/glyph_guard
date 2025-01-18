@@ -1,0 +1,9 @@
+<h1>Generated Images</h1>
+
+<%= link_to "New Generated Image", new_generated_image_path %>
+
+<ul>
+  <% @generated_images.each do |gi| %>
+    <li><%= link_to gi.text, gi %></li>
+  <% end %>
+</ul>
