@@ -11,18 +11,18 @@
 In a Mac terminal:
 
 ```sh
-  $ brew install imagemagick vips
-  ```
+brew install imagemagick
+```
 
  In a debian/ubuntu terminal:
 
 ```sh
-  $ sudo apt install imagemagick libvips
-  ```
+sudo apt install imagemagick
+```
 
 2. Set up and run the Rails app.
 
-```
+```sh
 bin/setup
 bin/dev
 # => http://localhost:3000/
