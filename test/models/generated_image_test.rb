@@ -19,4 +19,18 @@ class GeneratedImageTest < ActiveSupport::TestCase
     )
     assert generated_image.save, "Failed to save the generated image with image and given_text"
   end
+  test "should generate OCR block image" do
+    generated_image = GeneratedImage.new(
+      given_text: "Sample text",
+      options: {
+        "font_path" => "app/assets/fonts/JetBrainsMonoNL-Regular.ttf",
+        "font_size" => 24,
+        "wave" => true,
+        "blur" => true,
+        "implode" => true
+      }
+    )
+    generated_image.generate_ocr_block_image!
+    assert generated_image.image.attached?, "OCR block image was not generated and attached"
+  end
 end
