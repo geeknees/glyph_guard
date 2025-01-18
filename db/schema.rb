@@ -41,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_18_052211) do
 
   create_table "generated_images", force: :cascade do |t|
     t.text "given_text", default: "", null: false
-    t.text "options"
+    t.text "options", default: "{}", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

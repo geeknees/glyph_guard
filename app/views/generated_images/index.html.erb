@@ -4,6 +4,6 @@
 
 <ul>
   <% @generated_images.each do |gi| %>
-    <li><%= link_to gi.given_text, gi %></li>
+    <li><%= link_to truncate(gi.given_text, length: 140), gi %></li>
   <% end %>
 </ul>

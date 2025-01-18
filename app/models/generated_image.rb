@@ -1,6 +1,8 @@
 require "mini_magick"
 
 class GeneratedImage < ApplicationRecord
+  serialize :options, coder: JSON
+
   has_one_attached :image
 
   validates_presence_of :image
@@ -10,6 +12,7 @@ class GeneratedImage < ApplicationRecord
   def generate_ocr_block_image!
     # options がハッシュで保存されていると想定
     # 例: { "font_path": "/path/to/font.ttf", "font_size": 24, "wave": true, ... }
+    pp options
     font_path   = options["font_path"]   || "app/assets/fonts/JetBrainsMonoNL-Regular.ttf"
     font_size   = options["font_size"]   || 24
     wave        = options["wave"]        || false
