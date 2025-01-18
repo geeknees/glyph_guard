@@ -34,7 +34,8 @@ class GeneratedImage < ApplicationRecord
         image = image.font(font_path) if font_path
         image = image.fill("black")
         image = image.pointsize(font_size.to_i)
-        image = image.draw("text 10,50 '#{given_text}'")
+        escaped_text = given_text.gsub(/(['"])/, '\\\\\1')
+        image = image.draw("text 10,50 '#{escaped_text}'")
 
         # wave/implode/blur 等カスタム処理
         image = image.wave("5x50")   if wave
