@@ -12,8 +12,12 @@ class GeneratedImage < ApplicationRecord
   def generate_ocr_block_image!
     # options がハッシュで保存されていると想定
     # 例: { "font_path": "/path/to/font.ttf", "font_size": 24, "wave": true, ... }
-    pp options
     font_path   = options["font_path"]   || "app/assets/fonts/JetBrainsMonoNL-Regular.ttf"
+    font_path = if options["use_zxx_noise_font"]
+      "app/assets/fonts/ZXXNoise.otf"
+    else
+      options["font_path"] || "app/assets/fonts/UDEVGothicJPDOC-Regular.ttf"
+    end
     font_size   = options["font_size"]   || 24
     wave        = options["wave"]        || false
     implode     = options["implode"]     || false

@@ -13,12 +13,13 @@ class GeneratedImagesController < ApplicationController
 
   def create
     @generated_image = GeneratedImage.new(
-      generated_image_params.except(:wave, :implode, :blur))
+      generated_image_params.except(:wave, :implode, :blur, :use_zxx_noise_font))
 
     @generated_image.options = {
       "wave" => params[:generated_image][:wave] == "1",
       "implode" => params[:generated_image][:implode] == "1",
-      "blur" => params[:generated_image][:blur] == "1"
+      "blur" => params[:generated_image][:blur] == "1",
+      "use_zxx_noise_font" => generated_image_params[:use_zxx_noise_font] == "1"
     }
     if @generated_image.generate_ocr_block_image!
       redirect_to @generated_image,
@@ -31,6 +32,7 @@ class GeneratedImagesController < ApplicationController
   private
 
   def generated_image_params
-    params.require(:generated_image).permit(:given_text, :wave, :implode, :blur)
+    params.require(:generated_image)
+    .permit(:given_text, :wave, :implode, :blur, :use_zxx_noise_font)
   end
 end
