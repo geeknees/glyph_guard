@@ -398,7 +398,7 @@ DEPENDENCIES
   selenium-webdriver
   solid_cable
   solid_cache
-  solid_queue (~> 1.2.0)
+  solid_queue
   sqlite3 (>= 2.1)
   stimulus-rails
   thruster
